@@ -1,5 +1,5 @@
 {
-  "name": "@glagh/giorgi-configs-monorepo",
+  "name": "@cla/configs-monorepo",
   "version": "1.11.0",
   "main": "index.js",
   "publishConfig": {

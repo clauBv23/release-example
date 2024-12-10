@@ -1,5 +1,5 @@
 {
-  "name": "@glagh/giorgi-contracts-monorepo",
+  "name": "@cla/contracts-monorepo",
   "version": "1.6.0",
   "main": "index.js",
   "license": "MIT",
