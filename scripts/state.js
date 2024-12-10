@@ -30,7 +30,7 @@ module.exports = async ({ github, context, core }) => {
   core.info(`State eventName ${eventName}`);
   core.info(`State botRun ${botRun}`);
   
-  core.info(`State PULL_REQUEST_MERGED ${github.event.pull_request.merged}`);
+  // core.info(`State PULL_REQUEST_MERGED ${github.event.pull_request.merged}`);
   core.info(`State HEAD_REF ${github.head_ref }`);
   core.info(`State BASE_REF ${github.base_ref }`);
 
