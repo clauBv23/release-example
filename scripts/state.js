@@ -40,6 +40,7 @@ module.exports = async ({ github, context, core }) => {
   core.info(`State HEAD_REF ${process.env.HEAD_REF}`);
   core.info(`State BASE_REF ${process.env.BASE_REF}`);
   core.info(`State isReleaseBranch ${isReleaseBranch}`);
+  core.info(`State isChangesetPRMerged ${isChangesetPRMerged}`);
 
   
   function shouldRunStart() {
@@ -51,13 +52,13 @@ module.exports = async ({ github, context, core }) => {
   // ! ^^ miss leading? shouldn't be workflow automatically triggered on release-* branch?
   // 2. The PR(that is NOT changeset's own PR) was merged to it.
   //    If changeset's PR was merged, we run publish.
-  // 3. On push to the release-* branch 
+  // ! consider changing to on push on release-* branch, this includes push and merge prs 
 
   function shouldRunChangesets() {
     return (
       (isReleaseBranch && isWorkflowDispatch && botRun) ||
-      (prRequest.isPR && prRequest.merged && !isChangesetPRMerged) ||
-      (prRequest.isPush && isReleaseBranch)
+      // (prRequest.isPR && prRequest.merged && !isChangesetPRMerged) ||
+      (prRequest.isPush && isReleaseBranch && !isChangesetPRMerged)
     );
   }
 
