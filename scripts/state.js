@@ -16,7 +16,7 @@ module.exports = async ({ github, context, core }) => {
     target: process.env.BASE_REF, // target branch's name
   };
 
-  const refName = process.env.GITHUB_REF_NAME;
+  const refName = process.env.GITHUB_REF_NAME;  // branch name or tag name that triggered the workflow
   const botRun = process.env.TRIGGERING_ACTOR === "github-actions[bot]";
   const isWorkflowDispatch = eventName == "workflow_dispatch";
   const isReleaseBranch = refName.startsWith("release-");
@@ -26,20 +26,28 @@ module.exports = async ({ github, context, core }) => {
   const preState = await readPreState(process.cwd());
   const isPreRelease = preState?.mode === "pre";
 
-  core.info(`State ${refName}`);
-  core.info(`State ${eventName}`);
-  core.info(`State ${botRun}`);
-  core.info(`State ${process.env.PULL_REQUEST_MERGED}`);
-  core.info(`State ${process.env.HEAD_REF}`);
-  core.info(`State ${process.env.BASE_REF}`);
-  core.info(`State ${isReleaseBranch}`);
+  core.info(`State refName ${refName}`);
+  core.info(`State eventName ${eventName}`);
+  core.info(`State botRun ${botRun}`);
+  
+  core.info(`State PULL_REQUEST_MERGED ${github.event.pull_request.merged}`);
+  core.info(`State HEAD_REF ${github.head_ref }`);
+  core.info(`State BASE_REF ${github.base_ref }`);
 
+
+  core.info(`State PULL_REQUEST_MERGED ${process.env.PULL_REQUEST_MERGED}`);
+  core.info(`State HEAD_REF ${process.env.HEAD_REF}`);
+  core.info(`State BASE_REF ${process.env.BASE_REF}`);
+  core.info(`State isReleaseBranch ${isReleaseBranch}`);
+
+  
   function shouldRunStart() {
     return refName == "main" && isWorkflowDispatch;
   }
 
   // Changeset(which updates the PR) should only run in 2 cases:
   // 1. we manually triggered the workflow on `release-*` branch
+  // ! ^^ miss leading? shouldn't be workflow automatically triggered on release-* branch?
   // 2. The PR(that is NOT changeset's own PR) was merged to it.
   //    If changeset's PR was merged, we run publish.
   function shouldRunChangesets() {
@@ -63,6 +71,7 @@ module.exports = async ({ github, context, core }) => {
     return prRequest.isPR && prRequest.merged && isChangesetPRMerged;
   }
 
+  // ! ?????
   async function shouldRunMerge() {
     const head = `${context.repo.owner}:${prRequest.target}`
 
