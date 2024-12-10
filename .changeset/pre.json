@@ -1,0 +1,9 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "@cla/configs-monorepo": "1.11.0",
+    "@cla/contracts-monorepo": "1.6.0"
+  },
+  "changesets": []
+}
