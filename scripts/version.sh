@@ -7,6 +7,7 @@ mapping="contracts:@glagh/giorgi-contracts-monorepo configs:@glagh/giorgi-config
 
 package="${REF_NAME##*-}"
 
+echo "herererererere=======>"
 echo $REF_NAME
 echo $package
 
@@ -17,6 +18,7 @@ for pair in $mapping; do
     value="${pair#*:}"
 
     if [[ "$key" != "$package" ]]; then
+        #  this logic would need to change since commons has more than 2 packages
         changeset version --ignore $value
     fi
 done

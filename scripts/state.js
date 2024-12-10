@@ -31,8 +31,8 @@ module.exports = async ({ github, context, core }) => {
   core.info(`State botRun ${botRun}`);
   
   // core.info(`State PULL_REQUEST_MERGED ${github.event.pull_request.merged}`);
-  core.info(`State HEAD_REF ${github.head_ref }`);
-  core.info(`State BASE_REF ${github.base_ref }`);
+  core.info(`State Base_ref ${github.base_ref }`);
+  core.info(`State Ref_name ${github.ref_name}`);
 
 
   core.info(`State PULL_REQUEST_MERGED ${process.env.PULL_REQUEST_MERGED}`);
