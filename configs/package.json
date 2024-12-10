@@ -1,5 +1,5 @@
 {
-  "name": "@cla/configs-monorepo",
+  "name": "clau-pkg2",
   "version": "1.11.0",
   "main": "index.js",
   "publishConfig": {

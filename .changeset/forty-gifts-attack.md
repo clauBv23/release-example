@@ -1,5 +1,5 @@
 ---
-"@cla/contracts-monorepo": minor
+"clau-pkg1": minor
 ---
 
 minor

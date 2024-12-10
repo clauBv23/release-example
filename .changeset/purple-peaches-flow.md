@@ -1,5 +1,5 @@
 ---
-"@cla/configs-monorepo": minor 
+"clau-pkg2": minor 
 ---
 
 minor

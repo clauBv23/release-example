@@ -1,5 +1,5 @@
 ---
-"@cla/configs-monorepo": patch
+"clau-pkg2": patch
 ---
 
 patch

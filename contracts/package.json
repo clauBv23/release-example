@@ -1,5 +1,5 @@
 {
-  "name": "@cla/contracts-monorepo",
+  "name": "clau-pkg1",
   "version": "1.6.0",
   "main": "index.js",
   "license": "MIT",
