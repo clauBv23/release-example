@@ -5,5 +5,11 @@
     "@cla/configs-monorepo": "1.11.0",
     "@cla/contracts-monorepo": "1.6.0"
   },
-  "changesets": []
+  "changesets": [
+    "eleven-monkeys-heal",
+    "forty-gifts-attack",
+    "nervous-mails-sell",
+    "purple-peaches-flow",
+    "selfish-eyes-love"
+  ]
 }
