@@ -34,8 +34,8 @@ jobs:
         env:
           TRIGGERING_ACTOR: ${{ github.triggering_actor }}
           PULL_REQUEST_MERGED: ${{ github.event.pull_request.merged }}
-          HEAD_REF: ${{ github.head_ref }}
-          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }} # source branch
+          BASE_REF: ${{ github.base_ref }} # target branch
         with:
           result-encoding: string
           script: await require('./scripts/state.js')({ github, context, core })
@@ -102,7 +102,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          version: yarn version
+          version: yarn ignore
           # When a PR is merged to `release-*`, changesets/action uses `ref_name` which 
           # is `<pr_number>/merge` and not the source branch name. Such a PR causes 
           # changeset's new PR creation instead of updating the current one. 
