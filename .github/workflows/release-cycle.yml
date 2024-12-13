@@ -12,12 +12,10 @@ on:
     inputs:
       package:
         type: choice
-        description: Which package to release(NOTE:Used only when triggered from `main` branch. When triggered from `release-*` branch, it grabs the package folder name from the branch name)
+        description: Which package to release (only used when dispatching from main branch)
         options: 
           - "contracts"
           - "configs"
-          - "sdk"
-          - "artifacts"
         required: ${{ github.ref == 'refs/heads/main' }}
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
