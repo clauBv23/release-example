@@ -9,6 +9,9 @@ on:
     types:
       - closed
   workflow_dispatch:
+    branches:
+      - main
+      - release-*
     inputs:
       package:
         type: choice
