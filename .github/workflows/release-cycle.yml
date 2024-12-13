@@ -19,7 +19,6 @@ on:
         options: 
           - "contracts"
           - "configs"
-        required: true
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
