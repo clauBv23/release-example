@@ -16,8 +16,7 @@ on:
         options: 
           - "contracts"
           - "configs"
-        required: ${{ github.ref == 'refs/heads/main' }}
-
+        required: true
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
