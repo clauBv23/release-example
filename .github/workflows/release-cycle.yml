@@ -12,10 +12,11 @@ on:
     inputs:
       package:
         type: choice
-        description: Which package to release
+        description: Which package to release (only used when dispatching from main branch)
         options: 
           - "contracts"
           - "configs"
+        required: ${{ github.ref == 'refs/heads/main' }}
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
